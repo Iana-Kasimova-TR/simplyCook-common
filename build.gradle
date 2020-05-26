@@ -1,6 +1,8 @@
 plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 	id 'java'
+	id 'maven-publish'
+	id "io.freefair.lombok" version "5.1.0"
 }
 
 publishing {
@@ -9,38 +11,28 @@ publishing {
 			name = "GitHubPackages"
 			url = uri("https://maven.pkg.github.com/Iana-Kasimova-TR/simplyCook-common")
 			credentials {
-				username = System.getenv("GITHUB_ACTOR")
-				password = System.getenv("GITHUB_TOKEN")
+				username = "Iana-Kasimova-TR"
+				password = "b9de2d79eab539a943d50a805e2b84a0948118a1"
 			}
 		}
 	}
 	publications {
 		gpr(MavenPublication) {
-			artifact bootJar
+			from(components.java)
 		}
 	}
 }
 
 group = 'com.simply'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.2-SNAPSHOT'
 sourceCompatibility = '11'
-
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-	testImplementation('org.springframework.boot:spring-boot-starter-test') {
-		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
-	}
+	compile group: 'org.springframework.data', name: 'spring-data-elasticsearch', version: '4.0.0.RELEASE'
 }
 
 test {
