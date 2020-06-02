@@ -19,7 +19,7 @@ jobs:
         with:
           java-version: 11.0.4
       - name: gradle Package
-        run:  gradlew build
+        run:  ./gradlew build
 
   artifact:
     name: Publish - GitHub Packages
