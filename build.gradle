@@ -12,8 +12,8 @@ publishing {
 			name = "GitHubPackages"
 			url = uri("https://maven.pkg.github.com/Iana-Kasimova-TR/simplyCook-common")
 			credentials {
-				username = "Iana-Kasimova-TR"
-				password = "b9de2d79eab539a943d50a805e2b84a0948118a1"
+				username = System.getenv("GITHUB_ACTOR")
+				password = System.getenv("GITHUB_TOKEN")
 			}
 		}
 	}
