@@ -33,6 +33,6 @@ jobs:
         with:
           java-version: 11.0.4
       - name: Publish artifact on GitHub Packages
-        run: gradlew publish
+        run: ./gradlew publish
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
